@@ -64,21 +64,7 @@ class DeviceSelectionViewModel @Inject constructor(
     private val scanCallback = object : ScanCallback() {
         override fun onScanResult(callbackType: Int, result: ScanResult) {
             val device = result.device
-            val deviceName = if (ActivityCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.BLUETOOTH_CONNECT
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return
-            }
-                device.name
+            val deviceName = device.name
             if (deviceName != null && deviceName.isNotEmpty()) {
                 Log.d(TAG, "Found device: $deviceName (${device.address}) RSSI: ${result.rssi}")
                 val existingDeviceIndex = _devices.value.indexOfFirst { deviceInfo -> deviceInfo.device.address == device.address }

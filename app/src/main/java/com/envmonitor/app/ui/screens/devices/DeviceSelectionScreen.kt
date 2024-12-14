@@ -163,20 +163,6 @@ private fun ConnectedDeviceCard(
                     style = MaterialTheme.typography.bodyMedium
                 )
                 device?.let {
-                    if (ActivityCompat.checkSelfPermission(
-                            this,
-                            Manifest.permission.BLUETOOTH_CONNECT
-                        ) != PackageManager.PERMISSION_GRANTED
-                    ) {
-                        // TODO: Consider calling
-                        //    ActivityCompat#requestPermissions
-                        // here to request the missing permissions, and then overriding
-                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                        //                                          int[] grantResults)
-                        // to handle the case where the user grants the permission. See the documentation
-                        // for ActivityCompat#requestPermissions for more details.
-                        return
-                    }
                     Text(
                         text = it.name ?: it.address,
                         style = MaterialTheme.typography.titleMedium,
@@ -282,20 +268,6 @@ private fun DeviceItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column {
-                if (ActivityCompat.checkSelfPermission(
-                        this,
-                        Manifest.permission.BLUETOOTH_CONNECT
-                    ) != PackageManager.PERMISSION_GRANTED
-                ) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    return
-                }
                 Text(
                     text = device.name ?: "Unknown Device",
                     style = MaterialTheme.typography.titleMedium
